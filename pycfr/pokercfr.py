@@ -1,5 +1,5 @@
-from pokertrees import *
-from pokerstrategy import *
+from .pokertrees import *
+from .pokerstrategy import *
 import random
 
 class CounterfactualRegretMinimizer(object):
@@ -316,7 +316,7 @@ class ChanceSamplingCFR(CounterfactualRegretMinimizer):
     def cfr_holecard_node(self, root, reachprobs):
         assert(len(root.children) == 1)
         return self.cfr_helper(root.children[0], reachprobs)
-    
+
     def cfr_boardcard_node(self, root, reachprobs):
         # Number of community cards dealt this round
         num_dealt = len(root.children[0].board) - len(root.board)
@@ -446,7 +446,7 @@ class OutcomeSamplingCFR(ChanceSamplingCFR):
     def cfr_holecard_node(self, root, reachprobs, sampleprobs):
         assert(len(root.children) == 1)
         return self.cfr_helper(root.children[0], reachprobs, sampleprobs)
-    
+
     def cfr_boardcard_node(self, root, reachprobs, sampleprobs):
         # Number of community cards dealt this round
         num_dealt = len(root.children[0].board) - len(root.board)

@@ -1,9 +1,9 @@
 import sys
 import os
 sys.path.insert(0,os.path.realpath('.'))
-from pokerstrategy import *
-from pokergames import *
-from pokercfr import *
+from pycfr.pokerstrategy import *
+from pycfr.pokergames import *
+from pycfr.pokercfr import *
 
 def near(val, expected, distance=0.0001):
     return val >= (expected - distance) and val <= (expected + distance)

@@ -1,4 +1,5 @@
-from pokertrees import *
+from .pokertrees import *
+from .card import Card
 
 def kuhn_eval(hc, board):
     return hc[0].rank
@@ -29,7 +30,7 @@ def kuhn_rules():
     ante = 1
     blinds = None
     rounds = [RoundInfo(holecards=1,boardcards=0,betsize=1,maxbets=[1,1])]
-    return GameRules(players, deck, rounds, ante, blinds, handeval=kuhn_eval, infoset_format=leduc_format) 
+    return GameRules(players, deck, rounds, ante, blinds, handeval=kuhn_eval, infoset_format=leduc_format)
 
 def kuhn_gametree():
     rules = kuhn_rules()
@@ -123,4 +124,4 @@ def royal_publictree():
     rules = royal_rules()
     tree = PublicTree(rules)
     tree.build()
-    return tree   
+    return tree

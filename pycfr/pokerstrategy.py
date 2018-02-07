@@ -1,4 +1,4 @@
-from pokertrees import *
+from .pokertrees import *
 import random
 
 def choose(n, k):
@@ -336,6 +336,3 @@ class StrategyProfile(object):
             max_strategy.policy[infoset] = probs
             player_payoffs[hc] = max_value
         return player_payoffs
-
-
-

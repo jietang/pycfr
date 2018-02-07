@@ -1,10 +1,8 @@
-from itertools import combinations
-from itertools import permutations
-from itertools import product
+from itertools import combinations, permutations, product
 from collections import Counter
-from hand_evaluator import HandEvaluator
 from copy import deepcopy
 from functools import partial
+from .hand_evaluator import HandEvaluator
 
 FOLD = 0
 CALL = 1
@@ -273,7 +271,7 @@ class PublicTree(GameTree):
                 for new_hc in all_hc:
                     for old_hc in holes[player]:
                         if not overlap(old_hc, new_hc):
-                            updated_holes[player].append(old_hc + new_hc)         
+                            updated_holes[player].append(old_hc + new_hc)
         if cur_round.boardcards:
             self.build_boardcards(hnode, next_player, players_in, committed, updated_holes, board, deck, bet_history, round_idx, min_actions_this_round, actions_this_round, bets)
         else:
@@ -321,7 +319,7 @@ class PublicTree(GameTree):
         # Every card must be unique because two players cannot have the same holecard.
         return list([x for x in product(*holes) if all_unique(x)])
 
-    def calc_payoffs(self, hands, scores, players_in, committed, pot):        
+    def calc_payoffs(self, hands, scores, players_in, committed, pot):
         winners = []
         maxscore = -1
         for i,hand in enumerate(hands):
@@ -336,7 +334,7 @@ class PublicTree(GameTree):
         payoffs = [-x for x in committed]
         for w in winners:
             payoffs[w] += payoff
-        return payoffs    
+        return payoffs
 
 class Node(object):
     def __init__(self, parent, committed, holecards, board, deck, bet_history):
